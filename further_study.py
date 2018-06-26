@@ -30,8 +30,11 @@ def custom_len(input_list):
         8
 
     """
+    i = 0
+    for note in input_list:
+        i +=1
 
-    return 0
+    return i
 
 
 # For the next four exercises, you'll need to be clever and think about ways
@@ -58,8 +61,9 @@ def custom_append(input_list, value):
         True
 
     """
+    input_list[-1:-1] = [input_list[-1]]
+    input_list[-1] = value
 
-    pass
 
 
 def custom_extend(input_list, second_list):
@@ -78,7 +82,9 @@ def custom_extend(input_list, second_list):
 
     """
 
-    pass
+    for item in second_list:
+        input_list[-1:-1] = [input_list[-1]]
+        input_list[-1] = item
 
 
 def custom_insert(input_list, index, value):
@@ -95,8 +101,8 @@ def custom_insert(input_list, index, value):
         True
 
     """
+    input_list[index:index] = [value]
 
-    pass
 
 
 def custom_remove(input_list, value):
@@ -114,8 +120,12 @@ def custom_remove(input_list, value):
         True
 
     """
-
-    pass
+    i = 0
+    for note in input_list:
+        i += 1
+        if note == value:
+            del input_list[i-1]
+            break
 
 
 def custom_pop(input_list):
@@ -133,8 +143,9 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    last_item = input_list[-1]
+    del input_list[-1]
+    return last_item
 
 
 def custom_index(input_list, value):
@@ -149,8 +160,12 @@ def custom_index(input_list, value):
         1
 
     """
+    i = 0
+    for note in input_list:
+        i += 1
+        if note == value:
+            return i-1
 
-    return 0
 
 
 def custom_count(input_list, value):
@@ -238,4 +253,4 @@ if __name__ == "__main__":
 
     result = doctest.testmod()
     if result.failed == 0:
-        print "ALL TESTS PASSED"
+        print ("ALL TESTS PASSED")
