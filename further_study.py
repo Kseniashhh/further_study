@@ -61,6 +61,9 @@ def custom_append(input_list, value):
         True
 
     """
+    #input_list[-1:] = [input_list[-1], value]
+
+    #OG Solution
     input_list[-1:-1] = [input_list[-1]]
     input_list[-1] = value
 
@@ -83,8 +86,7 @@ def custom_extend(input_list, second_list):
     """
 
     for item in second_list:
-        input_list[-1:-1] = [input_list[-1]]
-        input_list[-1] = item
+        custom_append(input_list, item)
 
 
 def custom_insert(input_list, index, value):
@@ -180,8 +182,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    i = 0
+    for note in input_list:
+        if note == value:
+            i += 1
+    return i
 
 
 def custom_reverse(input_list):
@@ -199,8 +204,12 @@ def custom_reverse(input_list):
         True
 
     """
+    new_list = input_list[::-1]
+    i = 0
+    for item in input_list:
+        i += 1
+        input_list[i-1] = new_list[i-1]
 
-    pass
 
 
 def custom_contains(input_list, value):
@@ -220,7 +229,12 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for number in input_list:
+        if number == value:
+            return True
+        else:
+            continue
+    return False
 
 
 def custom_equality(some_list, another_list):
@@ -238,8 +252,14 @@ def custom_equality(some_list, another_list):
         False
 
     """
-
-    return None
+    i = 0
+    for note in some_list:
+        if note == another_list[i]:
+            i += 1
+            continue
+        else:
+            return False
+    return True
 
 
 ##############################################################################
